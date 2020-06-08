@@ -7,13 +7,13 @@ from main import forms
 # def home(request):
 #     return render(request, 'home.html', {})
 
-class ContactForm(FormView):
+class ContactUsView(FormView):
     template_name = "contact_form.html"
-    from_class = forms.ContactForm
+    form_class = forms.ContactForm
     success_url = "/"
-
+    
     def form_valid(self, form):
-        forms.send_mail()
+        form.send_mail()
         return super().form_valid(form)
 
 
